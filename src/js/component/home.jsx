@@ -1,26 +1,71 @@
-import React from "react";
+import React, { useState } from "react";
 
 //include images into your bundle
 import rigoImage from "../../img/rigo-baby.jpg";
 
 //create your first component
-const Home = () => {
-	return (
-		<div className="text-center">
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
-		</div>
-	);
-};
+const lista = [{
+	numero: "ocho",
+	color: "negro",
+	pais: "Alemania",
+  
+  }, {
+	numero: "dos",
+	color: "blanco",
+	pais: "España",
+  
+  }, {
+	numero: "cinco",
+	color: "gris",
+	pais: "Camboya",
+  
+  }]
+  
+const Todo = () => {
+	const [state, setState] = useState(lista)
+	const [color, setColor] = useState("")
 
-export default Home;
+    const añadir = () => {
+		setState([...state, {color: color}])
+		setColor("")
+	}
+	const eliminarItem = (listValorIndex) => {
+		const list = state.filter((listItem, index) => {
+			return index != listValorIndex
+		})
+		setState(list)
+	}
+
+	return (<>
+	<div className="conatainer">
+	<p className="header"> TODO LIST </p>
+	<input className="barra" value={color} onChange={(e) => {
+		setColor(e.target.value)
+	}} />
+	<button className="boton" onClick={añadir}>Añadir</button>
+	
+	<ul className="cuerpo">
+		{state.map((item, index) => {
+			return (<>
+			<li className="lista">
+				{item.color} <button className="botonX" onClick={() => eliminarItem(index)}>X</button>
+			</li>
+			</>)
+		})}
+		 
+	</ul>
+	<div className="contador" >
+        Total de elementos: {state.length}
+      </div>
+
+	</div>
+	
+
+	</>
+		
+	
+
+	)
+}
+
+export default Todo;

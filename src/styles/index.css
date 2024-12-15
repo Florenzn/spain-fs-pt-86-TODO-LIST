@@ -10,3 +10,109 @@
     import 'relative/path/to/stylesheet.scss';
 
 */
+body {
+    margin: 0;
+   
+    background: linear-gradient(100deg, rgb(179, 24, 24), rgb(140, 72, 161) );
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #fff;
+  }
+  .container {
+    text-align: center;
+    background: #ffffff;
+    color: #333;
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 500px;
+    width: 100%;
+    
+  }
+  .header {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: white;
+    
+  }
+  .barra {
+    width: calc(100% - 20px);
+    padding: 12px 10px;
+    margin-bottom: 15px;
+    border: 2px solid rgb(122, 73, 73);
+    border-radius: 8px;
+    font-size: 16px;
+    
+   
+  }
+  .boton {
+    display: inline-block;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+    background: linear-gradient(100deg, rgb(165, 74, 74), rgb(141, 72, 187), rgb(104, 85, 211));
+    border: none;
+    border-radius: 8px;
+    
+    
+  }
+  .cuerpo {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+  }
+  .lista {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    background: #f9f9f9;
+    color: #333;
+    
+  }
+  .botonX {
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: bold;
+    color: rgb(193, 174, 219);
+    background-color: black;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    
+  }
+  .contador {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: rgb(34, 32, 32);
+    background: #f0f4ff;
+    padding: 10px 15px;
+    border-radius: 8px;
+    display: inline-block;
+    
+  }
+  
+  
+  
+  
+  
+  
+  
+ 
+  
+
+  
+ 
+ 
+  
+  
+ 
+  
+  
