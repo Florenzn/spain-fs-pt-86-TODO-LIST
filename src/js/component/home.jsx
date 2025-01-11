@@ -46,7 +46,7 @@ const Todo = () => {
   return (
     <>
       <div className="container">
-        <p className="header"> TODO LIST </p>
+       <h1 className="nombre">TODO LIST</h1>
         <input
           className="barra"
           value={input}
