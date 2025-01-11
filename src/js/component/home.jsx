@@ -4,51 +4,45 @@ import React, { useEffect, useState } from "react";
 import rigoImage from "../../img/rigo-baby.jpg";
 
 //create your first component
-const addTodo = async (label) =>{
-	const response = await fetch("https://playground.4geeks.com/todo/users/einar", {
-		method: "POST",
-		headers: {
-			"Content-Type": "appLication/json"
-		},
-		body: JSON.stringify({ is_done: false, label })
-
-		
-
-	});
-	const todos = await response.json();
-	return todos;
-}
-
-const deleteTodo = async (id) => {
-	await fetch( 'https://playground.4geeks.com/todo/users/lista/$(id)', {
-		method: "DELETE"
-	})
-}
-  
-
 const Todo = () => {
   const [state, setState] = useState([]);
   const [input, setInput] = useState("");
 
   useEffect(() => {
-    actualizarLista();
-  }, []); 
-  const actualizarLista = async () => {
-    const listaTodo = await getTodos();
-    setState(listaTodo);
-  };
+    getTodos();
+  }, []);
+  
+  const getTodos = async () =>{
+    const response = await fetch('https://playground.4geeks.com/todo/users/einar', {
+      method: "GET"
+    });
+    const data = await response.json();
+    setState(data.todos);
+    console.log(data)
+  
+  }
 
-  const añadir = async (label) => { 
-    await addTodo(label);
-    await actualizarLista();
-    setInput(""); 
-  };
+  const addTodo = async (input) =>{
+    const response = await fetch("https://playground.4geeks.com/todo/todos/einar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "appLication/json"
+      },
+      body: JSON.stringify({ label: input, is_done: false })
+    });
+    const data = await response.json();
+    console.log(data)
+    getTodos()
+    setInput("")
+  }
 
-  const eliminarItem = async (id) => {
-    await deleteTodo(id);
-    await actualizarLista();
-  };
-
+  const deleteTodo = async (id) => {
+    await fetch( `https://playground.4geeks.com/todo/todos/${id}`, {
+      method: "DELETE"
+    })
+    getTodos()
+  }
+  
   return (
     <>
       <div className="container">
@@ -60,7 +54,7 @@ const Todo = () => {
             setInput(e.target.value);
           }}
         />
-        <button className="boton" onClick={() => añadir(input)}>
+        <button className="boton" onClick={() => addTodo(input)}>
           Añadir
         </button>
 
@@ -72,7 +66,7 @@ const Todo = () => {
 			{item.label}{" "}
 			<button
 			  className="botonX"
-			  onClick={() => eliminarItem(item.id)}
+			  onClick={() => deleteTodo(item.id)}
 			>
 			  X
 			</button>
