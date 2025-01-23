@@ -11,7 +11,6 @@ const Todo = () => {
   useEffect(() => {
     getTodos();
   }, []);
-  
   const getTodos = async () =>{
     const response = await fetch('https://playground.4geeks.com/todo/users/einar', {
       method: "GET"
@@ -21,6 +20,7 @@ const Todo = () => {
     console.log(data)
   
   }
+  
 
   const addTodo = async (input) =>{
     const response = await fetch("https://playground.4geeks.com/todo/todos/einar", {
